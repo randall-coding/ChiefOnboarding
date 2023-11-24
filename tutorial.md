@@ -10,6 +10,8 @@ Email notifications include:
 
 ![onboarding_dashboard](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/187dba13-b641-4cfd-9440-fd56944de9be)
 
+To deploy this server we will be using a pre-made Acorn image.
+
 ## What is Acorn? 
 Acorn is a new cloud platform that allows you to easily deploy, develop and manage web services with containerization.  A single acorn image can deploy all that you need: from a single container webserver, to a multi service Kubernetes cluster with high availability.  Don't worry if you don't understand what all those terms mean; we don't have to know that in order to deploy our server.
 
