@@ -9,11 +9,15 @@ containers: {
         env: {
             DEBUG: "False"
             SECRET_KEY: "secret://chief-onboarding/secret_key"
-            //BASE_URL: "http://0.0.0.0:3000"
             BASE_URL: "https://@{service.web.endpoint}"
             DATABASE_URL: "postgres://@{service.postgres.secrets.admin.username}:@{service.postgres.secrets.admin.password}@postgres:5432/@{service.postgres.data.dbName}"
             DEFAULT_FROM_EMAIL: "secret://chief-onboarding/default_email"
             ALLOWED_HOSTS: "@{service.web.endpoint}"
+            EMAIL_USE_SSL: "True"
+            EMAIL_HOST: "secret://chief-onboarding/email_host"
+            EMAIL_PORT: "secret://chief-onboarding/email_port"
+            EMAIL_HOST_USER: "secret://chief-onboarding/email_host_user"
+            EMAIL_HOST_PASSWORD: "secret://chief-onboarding/email_host_password"
         }
     }
 }
