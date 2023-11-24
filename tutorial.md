@@ -86,15 +86,25 @@ Visiting the endpoint should show a screen like this:
 - First we create the admin account
   -  Fill in the form on the first page
 - Next we are redirected to the login page to login
+  
 - Add new hire
   - On the New Hires dashboard page
   - Click "+Add" button
   - Fill in the new hire form
+
+![people_new_hires_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/f6bc9094-e64a-4866-b06d-48422dbf0f81)![add_btn_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/b7ec4547-f039-40b8-922d-54d2c190fcbb)
+
 - Add new tasks
   - On the Tasks dashboard page
   - Click "+Add" button
   - Fill in the new task form
+
+![all_tasks_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/57c65820-0519-4d00-8547-ad1e4231a445)![add_btn_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/b7ec4547-f039-40b8-922d-54d2c190fcbb)
+
 - Set up email integration (see SMTP Setup below)
+- Set email settings in Settings > General
+
+![email_settings_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/ec5d6b32-a555-4c71-9c83-6b92bea98e33)
 
 ### SMTP Setup
 To setup your email integrtion for ChiefOnboarding, make sure you add all the optional email values in your secret file (see instructions [above](/tutorial.md#setup-server)).  For more information see the email setup [documentation](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md#email).
@@ -103,6 +113,6 @@ To setup your email integrtion for ChiefOnboarding, make sure you add all the op
 That's it!  It's just that easy to get up and running with your own onboarding server.  
 
 # References
-* [Set up email](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md#email)
+* [Set up email docs](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md#email)
 * [Deployment docs](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md)
 * [Acorn docs](https://docs.acorn.io/)
