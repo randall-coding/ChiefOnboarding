@@ -67,12 +67,12 @@ Now that we have our secret file we can deploy our server from a pre-made image 
 
 On the acorn.io dashboard, click "Deploy Acorn" and select "From Acorn Image".
 
-Fill in the following fields:
+![deploy_acorn](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/822ad8ba-574a-4aea-86e3-33ab94a63d4d)
 
+Fill in the following fields:
 - Name: `<any name you like>`
 - Acorn Image: `ghcr.io/randall-coding/acorn/chief-onboarding`
 
-![deploy_acorn](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/822ad8ba-574a-4aea-86e3-33ab94a63d4d)
 
 Visit the acorn dashboard and find your recent deployment.  Click on the name of your deployment and find the endpoint section in the right panel.  Click "copy" on the `web` endpoint and visit the link.
 
@@ -82,20 +82,22 @@ Visiting the endpoint should show a screen like this:
 
 ![first_page_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/53379149-8f8f-4ce0-873e-7e7e9a8d19d5)
 
-## Setup ChiefOnBoarding
+## Setup ChiefOnboarding
 - First we create the admin account
   -  Fill in the form on the first page
-- Next we are redirected to the login page to login
-  
+- Next we are redirected to the login page.  Please login
+
+   ![login_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/801b372d-b9bc-4cb2-8363-3f211e74056f)
+
 - Add new hire
-  - On the New Hires dashboard page
+  - Visit the New Hires dashboard page
   - Click "+Add" button
   - Fill in the new hire form
 
 ![people_new_hires_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/f6bc9094-e64a-4866-b06d-48422dbf0f81)![add_btn_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/b7ec4547-f039-40b8-922d-54d2c190fcbb)
 
 - Add new tasks
-  - On the Tasks dashboard page
+  - Visit the Tasks dashboard page
   - Click "+Add" button
   - Fill in the new task form
 
