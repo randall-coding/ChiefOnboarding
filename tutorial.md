@@ -10,7 +10,7 @@ Email notifications include:
   - Sending an email to new hire with updates
   - Sending an email to new hire when tasks are overdue
 
-!!!onboarding_dashboard.png 
+![onboarding_dashboard](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/187dba13-b641-4cfd-9440-fd56944de9be)
 
 ## What is Acorn? 
 Acorn is a new cloud platform that allows you to easily deploy, develop and manage web services with containerization.  A single acorn image can deploy all that you need: from a single container webserver, to a multi service Kubernetes cluster with high availability.  Don't worry if you don't understand what all those terms mean; we don't have to know that in order to deploy our server.
@@ -55,10 +55,10 @@ Create secrets for your application using acorn-cli.  Change the dummy <> values
 acorn secrets create \
   --data secret_key=<your encryption key> \
   --data default_email=<your email> \
-  --data email_host=<email host> \
-  --data email_port=<port> \
-  --data email_host_user=<your user> \
-  --data email_host_password=<your password> \
+  --data email_host=<email host or blank> \
+  --data email_port=<port or blank> \
+  --data email_host_user=<your user or blank> \
+  --data email_host_password=<your password or blank> \
    chief-onboarding
 ```
 
@@ -72,15 +72,15 @@ Fill in the following fields:
 - Name: `<any name you like>`
 - Acorn Image: `ghcr.io/randall-coding/acorn/chief-onboarding`
 
-!! new deploy image
+![deploy_acorn](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/822ad8ba-574a-4aea-86e3-33ab94a63d4d)
 
 Visit the acorn dashboard and find your recent deployment.  Click on the name of your deployment and find the endpoint section in the right panel.  Click "copy" on the `web` endpoint and visit the link.
 
-!! endpoint image
+![onboarding_endpoint](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/d073913d-a77f-4a48-9d9a-f89c8f80a129)
 
 Visiting the endpoint should show a screen like this:
 
-!! initial page
+![first_page_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/53379149-8f8f-4ce0-873e-7e7e9a8d19d5)
 
 ## Setup ChiefOnBoarding
 - First we create the admin account
@@ -94,7 +94,7 @@ Visiting the endpoint should show a screen like this:
 - Set up email integration (see SMTP Setup)
 
 ### SMTP Setup
-To setup your email integrtion for ChiefOnboarding, make sure you add all the optional email values in your secret file.  For more information see the email setup [documentation](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md#email).
+To setup your email integrtion for ChiefOnboarding, make sure you add all the optional email values in your secret file (see instructions [above](#setup_server)).  For more information see the email setup [documentation](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md#email).
 
 ## Conclusion
 That's it!  It's just that easy to get up and running with your own onboarding server.  
