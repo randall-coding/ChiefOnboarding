@@ -45,10 +45,10 @@ Back in our local command terminal login to acorn.io with: <br>
 The server has several basic settings controlled by a secret object.  
  * **secret_key** - encryption key (string) used for your app
  * **default_email** - default email used by your mailer
- * **email_host**(optional) - SMTP host url (ex smtp.chiefonboarding.com) 
- * **email_port**(optional) - SMTP port number 
- * **email_host_user**(optional) - SMTP username 
- * **email_host_password**(optional) - SMTP password 
+ * **email_host** (optional) - SMTP host url (ex smtp.chiefonboarding.com) 
+ * **email_port** (optional) - SMTP port number 
+ * **email_host_user** (optional) - SMTP username 
+ * **email_host_password** (optional) - SMTP password 
 
 Create secrets for your application using acorn-cli.  Change the dummy <> values to your actual credentials.
 ```
