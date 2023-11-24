@@ -103,6 +103,6 @@ To setup your email integrtion for ChiefOnboarding, make sure you add all the op
 That's it!  It's just that easy to get up and running with your own onboarding server.  
 
 # References
-[Set up email](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md#email)
-[Deployment docs](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md)
-[Acorn docs](https://docs.acorn.io/)
+* [Set up email](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md#email)
+* [Deployment docs](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md)
+* [Acorn docs](https://docs.acorn.io/)
