@@ -1,4 +1,4 @@
-# Self host a pre-made company onboarding server
+# Self host a company onboarding server
 
 ## ChiefOnBoarding
 Want to onboard employees on your own servers but don't want to code everything from scratch?  In this tutorial, we will be doing just that with [ChiefOnboarding](https://chiefonboarding.com).  ChiefOnboarding is a free and open source employee onboarding platform. You can onboard new hires through Slack or the dashboard.
