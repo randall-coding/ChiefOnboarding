@@ -97,7 +97,7 @@ Visiting the endpoint should show a screen like this:
 - Set up email integration (see SMTP Setup below)
 
 ### SMTP Setup
-To setup your email integrtion for ChiefOnboarding, make sure you add all the optional email values in your secret file (see instructions [above](/tutorial.md/#setup_server)).  For more information see the email setup [documentation](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md#email).
+To setup your email integrtion for ChiefOnboarding, make sure you add all the optional email values in your secret file (see instructions [above](/tutorial.md#setup-server)).  For more information see the email setup [documentation](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md#email).
 
 ## Conclusion
 That's it!  It's just that easy to get up and running with your own onboarding server.  
