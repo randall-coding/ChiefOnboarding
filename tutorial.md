@@ -84,17 +84,20 @@ Visiting the endpoint should show a screen like this:
 
 ## Setup ChiefOnBoarding
 - First we create the admin account
-- Next we login
+  -  Fill in the form on the first page
+- Next we are redirected to the login page to login
 - Add new hire
-  - Click "+Add" button on the New hires page
+  - On the New Hires dashboard page
+  - Click "+Add" button
   - Fill in the new hire form
 - Add new tasks
-  - Click "+Add" button on the Tasks page
+  - On the Tasks dashboard page
+  - Click "+Add" button
   - Fill in the new task form
-- Set up email integration (see SMTP Setup)
+- Set up email integration (see SMTP Setup below)
 
 ### SMTP Setup
-To setup your email integrtion for ChiefOnboarding, make sure you add all the optional email values in your secret file (see instructions [above](#setup_server)).  For more information see the email setup [documentation](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md#email).
+To setup your email integrtion for ChiefOnboarding, make sure you add all the optional email values in your secret file (see instructions [above](/#setup_server)).  For more information see the email setup [documentation](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md#email).
 
 ## Conclusion
 That's it!  It's just that easy to get up and running with your own onboarding server.  
