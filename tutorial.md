@@ -1,18 +1,18 @@
-# Self host a pre-made company on boarding server
-
+# Self host a pre-made company onboarding server
 
 ## ChiefOnBoarding
-- Emails 
-  - Send email to new hire with login credentials
-  - Send email to new hire with updates
-  - Send email to new hire when tasks are overdue
+Do you want to onboard employees on your own servers but don't want to code everything from scratch?  In this tutorial, we will be doing just that today with [ChiefOnboarding](https://chiefonboarding.com).  ChiefOnboarding is a  a free and open source employee onboarding platform. You can onboarding new hires through Slack or the dashboard.
 
-## OrangeHRM
-[OrangeHRM](https://www.orangehrm.com/) is a comprehensive HRM system that captures all the essential functionalities required for any enterprise: employee management, HR administration, reporting, performance, career development, training, recruitment, onboarding, payroll and more.
+Other server features include automatically provisioning user accounts, triggering webhooks, pre-boarding, email notifications, and more.  
 
-OrangeHRM is open source with optional paid services, and no matter what tier you are on this is an impressive product.  The user interface is gorgeous and easy to use while also being feature rich. The best part is this server can be setup in minutes using a pre-made acorn image.
+Email notifications include: 
+  - Sending an email to new hire with login credentials
+  - Sending an email to new hire with updates
+  - Sending an email to new hire when tasks are overdue
 
-![orange_dashboard](https://github.com/randall-coding/orangehrm/assets/39175191/322fc65b-f6c0-4238-86f5-3c74537f6a4e)
+[Click here](https://github.com/chiefonboarding/ChiefOnboarding#features) for a more complete list of features.
+
+!!!onboarding_dashboard.png 
 
 ## What is Acorn? 
 Acorn is a new cloud platform that allows you to easily deploy, develop and manage web services with containerization.  A single acorn image can deploy all that you need: from a single container webserver, to a multi service Kubernetes cluster with high availability.  Don't worry if you don't understand what all those terms mean; we don't have to know that in order to deploy our server.
@@ -45,51 +45,63 @@ Back in our local command terminal login to acorn.io with: <br>
 
 ## Setup Server
 The server has several basic settings controlled by a secret object.  
- * **mysql_password** - database password
- 
-Create secrets for your application using acorn-cli.  Change the <> values to your actual credentials.
+ * **secret_key** - encryption key (string) used for your app
+ * **default_email** - default email used by your mailer
+ * **email_host**(optional) - SMTP host url (ex smtp.chiefonboarding.com) 
+ * **email_port**(optional) - SMTP port number 
+ * **email_host_user**(optional) - SMTP username 
+ * **email_host_password**(optional) - SMTP password 
+
+Create secrets for your application using acorn-cli.  Change the dummy <> values to your actual credentials.
 ```
-acorn secret create \
- --data mysql_password=<password> \
-   opensupports
+acorn secrets create \
+  --data secret_key=<your encryption key> \
+  --data default_email=<your email> \
+  --data email_host=<email host> \
+  --data email_port=<port> \
+  --data email_host_user=<your user> \
+  --data email_host_password=<your password> \
+   chief-onboarding
 ```
 
 ## Deploying Acorn
-Now that we have our secret file we can deploy our server from a pre-made image with just a click.
+Now that we have our secret file we can deploy our server from a pre-made image with just a few clicks.
 
 On the acorn.io dashboard, click "Deploy Acorn" and select "From Acorn Image".
 
 Fill in the following fields:
 
 - Name: `<any name you like>`
-- Acorn Image: `ghcr.io/randall-coding/acorn/orangehrm`
+- Acorn Image: `ghcr.io/randall-coding/acorn/chief-onboarding`
 
-![orange_new_deploy](https://github.com/randall-coding/orangehrm/assets/39175191/833b7de5-f9ab-4b44-af67-73bc19035947)
+!! new deploy image
 
-Visit the acorn dashboard and find your recent deployment.  Click on the name of your deployment and find the endpoint section in the right panel.  Click "copy" on the website endpoint and visit the link.
+Visit the acorn dashboard and find your recent deployment.  Click on the name of your deployment and find the endpoint section in the right panel.  Click "copy" on the `web` endpoint and visit the link.
 
-![endpoint](https://github.com/randall-coding/orangehrm/assets/39175191/15e37f0c-2dda-42cd-9e01-362d959e65d5)
+!! endpoint image
 
 Visiting the endpoint should show a screen like this:
 
-![orange_install_step1](https://github.com/randall-coding/orangehrm/assets/39175191/19de76e5-0610-4994-9f0d-5efeab61ad6c)
+!! initial page
 
 ## Setup ChiefOnBoarding
-- first we create the admin account
-- next we login
-- add new hire
-- add new tasks
-- where is email integration?  It says it sends emails in settings.. 
-  -> see Deployment.md   https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md#email
+- First we create the admin account
+- Next we login
+- Add new hire
+  - Click "+Add" button on the New hires page
+  - Fill in the new hire form
+- Add new tasks
+  - Click "+Add" button on the Tasks page
+  - Fill in the new task form
+- Set up email integration (see SMTP Setup)
 
-SMTP Setup
-EMAIL_HOST=smtp.chiefonboarding.com
-EMAIL_PORT=587
-EMAIL_HOST_USER=exampleuser
-EMAIL_HOST_PASSWORD=examplePass
-EMAIL_USE_TLS=False
-EMAIL_USE_SSL=True
+### SMTP Setup
+To setup your email integrtion for ChiefOnboarding, make sure you add all the optional email values in your secret file.  For more information see the email setup [documentation](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md#email).
+
+## Conclusion
+That's it!  It's just that easy to get up and running with your own onboarding server.  
 
 # References
 [Set up email](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md#email)
 [Deployment docs](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md)
+[Acorn docs](https://docs.acorn.io/)
