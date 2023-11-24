@@ -1,0 +1,27 @@
+containers: {
+    web: {
+        image: "ghcr.io/randall-coding/chief-onboarding"
+        consumes: ["postgres"]
+        ports: {
+            publish: ["80:8000/http"]
+            expose: ["8000:8000/tcp"]
+        }
+        env: {
+            DEBUG: "False"
+            SECRET_KEY: "secret://chief-onboarding/secret_key"
+            //BASE_URL: "http://0.0.0.0:3000"
+            BASE_URL: "https://@{service.web.endpoint}"
+            DATABASE_URL: "postgres://@{service.postgres.secrets.admin.username}:@{service.postgres.secrets.admin.password}@postgres:5432/@{service.postgres.data.dbName}"
+            DEFAULT_FROM_EMAIL: "secret://chief-onboarding/default_email"
+            ALLOWED_HOSTS: "@{service.web.endpoint}"
+        }
+    }
+}
+
+services: postgres: {
+    image: "ghcr.io/acorn-io/postgres:v15.#-#"
+}
+
+secrets: "chief-onboarding": {
+    external: "chief-onboarding"
+}
