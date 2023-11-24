@@ -12,5 +12,5 @@ COPY ./back/ .
 COPY ./back/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN pipenv install --system
 RUN django-admin compilemessages 
-
+EXPOSE 8000
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
