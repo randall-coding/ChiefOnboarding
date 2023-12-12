@@ -1,59 +1,120 @@
-# ChiefOnboarding
+# Self host a company onboarding server
 
-[![Tests](https://github.com/chiefonboarding/ChiefOnboarding/actions/workflows/tests.yml/badge.svg)](https://github.com/chiefonboarding/ChiefOnboarding/actions/workflows/tests.yml)
-[![Coverage Status](https://coveralls.io/repos/github/chiefonboarding/ChiefOnboarding/badge.svg?branch=master)](https://coveralls.io/github/chiefonboarding/ChiefOnboarding?branch=master)
-[![CodeQL](https://github.com/chiefonboarding/ChiefOnboarding/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/chiefonboarding/ChiefOnboarding/actions/workflows/codeql-analysis.yml)
+## ChiefOnBoarding
+Want to onboard employees on your own servers but don't want to code everything from scratch?  In this tutorial, we will be doing just that with [ChiefOnboarding](https://chiefonboarding.com).  ChiefOnboarding is a free and open source employee onboarding platform. You can onboard new hires through Slack or the dashboard.  Other server features include automatically provisioning user accounts, triggering webhooks, pre-boarding, email notifications, and [more](https://github.com/chiefonboarding/ChiefOnboarding#features).
 
-ChiefOnboarding is a free and open source employee onboarding platform. You can onboarding new hires through Slack or the dashboard. 
+Email notifications include: 
+  - Sending an email to new hire with login credentials
+  - Sending an email to new hire with updates
+  - Sending an email to new hire when tasks are overdue
 
-![chiefonboarding timeline overview](docs/static/timeline-overview.png)
+![onboarding_dashboard](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/187dba13-b641-4cfd-9440-fd56944de9be)
 
-Documentation: [https://docs.chiefonboarding.com](https://docs.chiefonboarding.com)
+To deploy this server we will be using a pre-made Acorn image.
 
-Demo video: [https://www.youtube.com/watch?v=8fYpB8WTH2M](https://www.youtube.com/watch?v=8fYpB8WTH2M)
+## What is Acorn? 
+Acorn is a new cloud platform that allows you to easily deploy, develop and manage web services with containerization.  A single acorn image can deploy all that you need: from a single container webserver, to a multi service Kubernetes cluster with high availability.  Don't worry if you don't understand what all those terms mean; we don't have to know that in order to deploy our server.
 
-## Features
-- **Automatically provision user accounts and trigger webhooks**, see [https://integrations.chiefonboarding.com](https://integrations.chiefonboarding.com) for a list of integrations or create your own!
-- **Pre-boarding**: onboarding doesn't start on day 1, it starts before that. Build pre-boarding pages to welcome new hires before they start.
-- **To do items**: keep track of the things that your new hires need to do and allow them to fill in forms.
-- **Resources**: let them search through the knowledge base and complete courses so they are quickly up to speed with colleagues.
-- **Sequences**: drip feeding items over time or based on the completion of a to do item. Avoid the overwhelming feeling.  
-- **Badges**: reward new hires for the things they have done. This also helps to keep them motivated.
-- **Introductions**: introduce people to new hires.
-- **Admin to do items**: collaborate with colleagues on things that need to be done for the new hire.
-- **Multilingual**: English, Dutch, Portuguese, German, Turkey, French, Spanish, and Japanese are all supported. Need another language? Send us an [email](mailto:hell@chiefonboarding.com)!
-- **Timezones**: It doesn't matter where your new hire lives. You can adjust the timezone per new hire, so they don't get messages in the middle of the night!
-- **Slack bot and dashboard**: your new hires can use the dashboard or the Slack bot. Both provide all features and can be used standalone.
-- **Customizable**: use your logo, add your color scheme, change the email template and even customize the bot to your liking. No one will know you are using ChiefOnboarding.
-- **Transparency, freedom, and privacy**: ChiefOnboarding is completely open-source and licensed under AGPLv3.
-- Host it yourself on your own infrastructure or [let us host it for you](https://chiefonboarding.com/pricing)!
+## Setup Acorn Account
+Setup an acorn account at [acorn.io](https://acorn.io).  This can be a free account for your first deployment, and if you'd like additional storage space you can look into the pro account or enterprise.  You will need a Github account to signup as shown in the image below.
 
-## Deployment
-Please see [the documentation for full details](https://docs.chiefonboarding.com).
+![signin_acorn](https://github.com/randall-coding/opensupports-docker/assets/39175191/d46815fb-d2d5-42cd-b93d-41ca541a63bd)
 
-**Docker**
+## Install acorn cli 
+First we need to install acorn-cli locally.  Choose an install method from the list below:
 
-See details here: [ChiefOnboarding on Docker Hub](https://hub.docker.com/r/chiefonboarding/chiefonboarding)
+**Linux or Mac** <br>
+`curl https://get.acorn.io | sh`
 
-**Heroku**
+**Homebrew (Linux or Mac)** <br>
+`brew install acorn-io/cli/acorn`
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/chiefonboarding/ChiefOnboarding)
+**Windows** <br> 
+Uncompress and move the [binary](https://cdn.acrn.io/cli/default_windows_amd64_v1/acorn.exe) to your PATH
 
-**Render**
+**Windows (Scoop)** <br>
+`scoop install acorn`
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/chiefonboarding/chiefonboarding)
+For up to date installation instructions, visit the [official docs](https://runtime-docs.acorn.io/installation/installing).
 
-**Elestio**
+## Login with cli
+Back in our local command terminal login to acorn.io with: <br>
+`acorn login acorn.io` 
 
-[![Deploy](https://pub-da36157c854648669813f3f76c526c2b.r2.dev/deploy-on-elestio-black.png)](https://elest.io/open-source/chiefonboarding)
+## Setup Server
+The server has several basic settings controlled by a secret object.  
+ * **secret_key** - encryption key (string) used for your app
+ * **default_email** - default email used by your mailer
+ * **email_host** (optional) - SMTP host url (ex smtp.chiefonboarding.com) 
+ * **email_port** (optional) - SMTP port number 
+ * **email_host_user** (optional) - SMTP username 
+ * **email_host_password** (optional) - SMTP password 
 
-## Support
-This software is provided under an open source license and comes as is. If you have any questions, then you will have to open an issue on Github for that. If you want guaranteed, quick support, then we offer a paid support package for that (best effort - generally under 2 hours response time). Please see our [pricing page](https://chiefonboarding.com/pricing) for more details. 
+Create secrets for your application using acorn-cli.  Change the dummy <> values to your actual credentials.
+```
+acorn secrets create \
+  --data secret_key=<your encryption key> \
+  --data default_email=<your email> \
+  --data email_host=<email host or blank> \
+  --data email_port=<port or blank> \
+  --data email_host_user=<your user or blank> \
+  --data email_host_password=<your password or blank> \
+   chief-onboarding
+```
 
-If you don't want to deal with hosting, maintaining and backing up your ChiefOnboarding instance, then we can do that for you as well. Please see our [pricing page](https://chiefonboarding.com/pricing) for more details.
+## Deploying Acorn
+Now that we have our secret file we can deploy our server from a pre-made image with just a few clicks.
 
-## Security issues
-Please do not create an issue if you found a potential security issue. Email me directly at security@chiefonboarding.com and we will get it resolved ASAP.
+On the acorn.io dashboard, click "Deploy Acorn" and select "From Acorn Image".
 
-## License
-This project is licensed under the AGPLv3 License - see the [LICENSE.md](LICENSE.md) file for details.
+![deploy_acorn](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/822ad8ba-574a-4aea-86e3-33ab94a63d4d)
+
+Fill in the following fields:
+- Name: `<any name you like>`
+- Acorn Image: `ghcr.io/randall-coding/acorn/chief-onboarding`
+
+
+Visit the acorn dashboard and find your recent deployment.  Click on the name of your deployment and find the endpoint section in the right panel.  Click "copy" on the `web` endpoint and visit the link.
+
+![onboarding_endpoint](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/d073913d-a77f-4a48-9d9a-f89c8f80a129)
+
+Visiting the endpoint should show a screen like this:
+
+![first_page_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/53379149-8f8f-4ce0-873e-7e7e9a8d19d5)
+
+## Setup ChiefOnboarding
+- First we create the admin account
+  -  Fill in the form on the first page
+- Next we are redirected to the login page.  Please login
+
+   ![login_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/801b372d-b9bc-4cb2-8363-3f211e74056f)
+
+- Add new hire
+  - Visit the New Hires dashboard page
+  - Click "+Add" button
+  - Fill in the new hire form
+
+![people_new_hires_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/f6bc9094-e64a-4866-b06d-48422dbf0f81)![add_btn_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/b7ec4547-f039-40b8-922d-54d2c190fcbb)
+
+- Add new tasks
+  - Visit the Tasks dashboard page
+  - Click "+Add" button
+  - Fill in the new task form
+
+![all_tasks_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/57c65820-0519-4d00-8547-ad1e4231a445)![add_btn_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/b7ec4547-f039-40b8-922d-54d2c190fcbb)
+
+- Set up email integration (see SMTP Setup below)
+- Set email settings in Settings > General
+
+![email_settings_onboarding](https://github.com/randall-coding/ChiefOnboarding/assets/39175191/ec5d6b32-a555-4c71-9c83-6b92bea98e33)
+
+### SMTP Setup
+To setup your email integrtion for ChiefOnboarding, make sure you add all the optional email values in your secret file (see instructions [above](/tutorial.md#setup-server)).  For more information see the email setup [documentation](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md#email).
+
+## Conclusion
+That's it!  It's just that easy to get up and running with your own onboarding server.  
+
+## References
+* [Set up email docs](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md#email)
+* [Deployment docs](https://github.com/chiefonboarding/ChiefOnboarding/blob/master/docs/Deployment.md)
+* [Acorn docs](https://docs.acorn.io/)
